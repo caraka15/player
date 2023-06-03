@@ -1,0 +1,125 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: orange;
+  padding: 10px;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+}
+
+nav ul li a {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+}
+
+nav ul li a:hover {
+  background-color: white;
+  color: orange;
+}
+
+.subscribe-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.subscribe {
+  position: relative;
+  height: 160px;
+  width: 240px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 4px;
+  color: #333;
+  box-shadow: 0px 0px 60px 5px rgba(0, 0, 0, 0.4);
+}
+
+.subscribe:after {
+  position: absolute;
+  content: "";
+  right: -10px;
+  bottom: 18px;
+  width: 0;
+  height: 0;
+  border-left: 0px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #1a044e;
+}
+
+.subscribe p {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 4px;
+  line-height: 28px;
+  bottom: 10px;
+}
+
+.subscribe input {
+  position: relative;
+  bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #d4d4d4;
+  padding: 10px;
+  width: 82%;
+  background: transparent;
+  transition: all 0.25s ease;
+  margin-bottom: 10px;
+}
+.subscribe .input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.subscribe .input-group input {
+  margin-bottom: 10px;
+}
+
+.subscribe input:focus {
+  outline: none;
+  border-bottom: 1px solid #0d095e;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+    "sans-serif";
+}
+
+.subscribe .submit-btn {
+  position: absolute;
+  border-radius: 30px;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  background-color: #0f0092;
+  color: #fff;
+  padding: 12px 25px;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 5px;
+  right: -10px;
+  bottom: -20px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: -5px 6px 20px 0px rgba(26, 26, 26, 0.4);
+}
+
+.subscribe .submit-btn:hover {
+  background-color: #07013d;
+  box-shadow: -5px 6px 20px 0px rgba(88, 88, 88, 0.569);
+}
