@@ -1,9 +1,10 @@
 <header>
     <nav>
         <ul>
-            <li><a href="../player">Khusus</a></li>
-            <li><a href="../player/tiktok">TikTok Downloader</a></li>
-            <li><a href="../player/instagram">IG Downloader</a></li>
+            <li><a href="../">Khusus</a></li>
+            <li><a href="https://ssstik.io/id">TikTok Downloader</a></li>
+            <li><a href="../instagram">IG Downloader</a></li>
+            <li><a href="admin.php">Admin</a></li>
         </ul>
     </nav>
 </header>

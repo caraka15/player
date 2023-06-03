@@ -55,20 +55,26 @@ if (!isset($_SESSION['access_code'])) {
                         $thumbnail = $data['result'][0]['single_img'];
                     }
                     $judul = $data['result'][0]['title'];
-
-                    // Menampilkan judul dan thumbnail video dengan form POST
-                    echo "<div class='video-card'>";
-                    echo "<div class='thumbnail-container'>";
-                    echo "<div class='thumbnail-wrapper'>";
-                    echo "<form action='player.php' method='post' target='_blank'>";
-                    echo "<input type='hidden' name='url' value='{$videoUrl}'>";
-                    echo "<input type='hidden' name='judul' value='{$judul}'>";
-                    echo "<img src='{$thumbnail}' alt='Thumbnail' class='thumbnail'>";
-                    echo "</form>";
-                    echo "</div>";
-                    echo "</div>";
-                    echo "<h2 class='title'><form action='player.php' method='post' target='_blank'><input type='hidden' name='url' value='{$videoUrl}'><input type='hidden' name='judul' value='{$judul}'><button type='submit' class='title-btn'>{$judul}</button></form></h2>";
-                    echo "</div>";
+            ?>
+            <div class="video-card">
+                <div class="thumbnail-container">
+                    <div class="thumbnail-wrapper">
+                        <form action="player.php" method="post" target="_blank">
+                            <input type="hidden" name="url" value="<?php echo $videoUrl; ?>">
+                            <input type="hidden" name="judul" value="<?php echo $judul; ?>">
+                            <img src="<?php echo $thumbnail; ?>" alt="Thumbnail" class="thumbnail">
+                        </form>
+                    </div>
+                </div>
+                <h2 class="title">
+                    <form action="player.php" method="post" target="_blank">
+                        <input type="hidden" name="url" value="<?php echo $videoUrl; ?>">
+                        <input type="hidden" name="judul" value="<?php echo $judul; ?>">
+                        <button type="submit" class="title-btn"><?php echo $judul; ?></button>
+                    </form>
+                </h2>
+            </div>
+            <?php
                 }
             } else {
                 echo "Tidak ada video yang ditemukan.";
