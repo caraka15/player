@@ -13,9 +13,12 @@ if (!isset($_SESSION['access_code'])) {
 <head>
     <title>Video List Bocah Prik</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style1.css">
 </head>
 
 <body>
+    <?php include 'src/header.php'; ?>
+
 
     <h1>Video List Bocah Prik</h1>
     <div id="blur-container">
