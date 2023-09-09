@@ -68,19 +68,20 @@ h1 {
   text-overflow: ellipsis;
 }
 
-.title-btn {
+/* Gaya tombol "button-like" */
+.button-like {
+  display: inline-block;
+  padding: 6px 12px; /* Ubah sesuai kebutuhan */
   background-color: var(--light-color);
   color: var(--secondary-color);
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
-  width: 195px;
-  height: 40px;
-  padding-top: 6px;
+  text-decoration: none; /* Hapus garis bawah pada tautan */
 }
 
-.title-btn:hover {
+.button-like:hover {
   background-color: var(--dark-color);
 }
 

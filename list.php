@@ -24,57 +24,30 @@ if (!isset($_SESSION['access_code'])) {
     <div id="blur-container">
         <div class="video-container">
             <?php
-            // Mengimpor koneksi database
-            require_once('db.php');
+            // Mendapatkan data video dari API Doodapi
+            $apiUrl = "https://doodapi.com/api/file/list?key=238952a5hhtdv0iazrlcf3";
+            $response = file_get_contents($apiUrl);
+            $data = json_decode($response, true);
 
-            // Memeriksa koneksi database
-            if ($conn->connect_error) {
-                die("Koneksi database gagal: " . $conn->connect_error);
-            }
-
-            // Mendapatkan data video dari tabel link
-            $sql = "SELECT * FROM link ORDER BY timestamp_column DESC";
-            $result = $conn->query($sql);
-
-            // Memeriksa apakah ada video yang ditemukan
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    // Mendapatkan link video
-                    $videoLink = $row['link'];
-
-                    // Mendapatkan video ID dari link video
-                    $videoId = substr($videoLink, strrpos($videoLink, '/') + 1);
-                    $videoUrl = "https://doodstream.com/e/{$videoId}";
-
-                    // Mengirim permintaan ke API Doodapi untuk mendapatkan thumbnail dan judul
-                    $apiUrl = "https://doodapi.com/api/file/image?key=238952rybn28vbb6uqxpyz&file_code=" . urlencode($videoId);
-                    $response = file_get_contents($apiUrl);
-                    $data = json_decode($response, true);
-
-                    // Memeriksa respon dari API Doodapi
-                    if ($data && isset($data['result'][0]['splash_img'])) {
-                        $thumbnail = $data['result'][0]['splash_img'];
-                    } else {
-                        $thumbnail = $data['result'][0]['single_img'];
-                    }
-                    $judul = $data['result'][0]['title'];
+            // Memeriksa respon dari API Doodapi
+            if ($data && isset($data['result']) && isset($data['result']['files'])) {
+                $videos = $data['result']['files'];
+                foreach ($videos as $video) {
+                    $videoUrl = str_replace("/d/", "/e/", $video['download_url']); // Mengganti d dengan e pada URL
+                    $judul = $video['title'];
+                    $thumbnail = $video['single_img'];
             ?>
             <div class="video-card">
                 <div class="thumbnail-container">
                     <div class="thumbnail-wrapper">
-                        <form action="player.php" method="post" target="_blank">
-                            <input type="hidden" name="url" value="<?php echo $videoUrl; ?>">
-                            <input type="hidden" name="judul" value="<?php echo $judul; ?>">
+                        <a href="player.php?file_code=<?php echo $fileCode; ?>" target="_blank">
                             <img src="<?php echo $thumbnail; ?>" alt="Thumbnail" class="thumbnail">
-                        </form>
+                        </a>
                     </div>
                 </div>
                 <h2 class="title">
-                    <form action="player.php" method="post" target="_blank">
-                        <input type="hidden" name="url" value="<?php echo $videoUrl; ?>">
-                        <input type="hidden" name="judul" value="<?php echo $judul; ?>">
-                        <button type="submit" class="title-btn"><?php echo $judul; ?></button>
-                    </form>
+                    <a href="player.php?file_code=<?php echo $fileCode; ?>" target="_blank"
+                        class="button-like"><?php echo $judul; ?></a>
                 </h2>
             </div>
             <?php
@@ -82,9 +55,6 @@ if (!isset($_SESSION['access_code'])) {
             } else {
                 echo "Tidak ada video yang ditemukan.";
             }
-
-            // Menutup koneksi database
-            $conn->close();
             ?>
         </div>
     </div>
