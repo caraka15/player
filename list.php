@@ -33,9 +33,11 @@ if (!isset($_SESSION['access_code'])) {
             if ($data && isset($data['result']) && isset($data['result']['files'])) {
                 $videos = $data['result']['files'];
                 foreach ($videos as $video) {
+                    $fileCode = $video['file_code']; // Ambil file_code dari data video
                     $videoUrl = str_replace("/d/", "/e/", $video['download_url']); // Mengganti d dengan e pada URL
                     $judul = $video['title'];
                     $thumbnail = $video['single_img'];
+            
             ?>
             <div class="video-card">
                 <div class="thumbnail-container">
