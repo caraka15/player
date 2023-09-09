@@ -32,18 +32,29 @@
 
 <body>
     <?php
-    // Memeriksa apakah parameter file_code ada di URL
+    // Memeriksa apakah parameter filecode ada di URL
     if (isset($_GET['file_code'])) {
         $fileCode = $_GET['file_code'];
-        
-        // Buat URL video berdasarkan file_code
-        $videoUrl = "https://dood.to/e/$fileCode";
+
+        // Buat URL API Doodapi untuk mendapatkan informasi video
+        $apiUrl = "https://doodapi.com/api/file/info?key=238952a5hhtdv0iazrlcf3&file_code=$fileCode";
+        $response = file_get_contents($apiUrl);
+        $data = json_decode($response, true);
+
+        // Memeriksa respon dari API Doodapi
+        if ($data && isset($data['result'][0])) {
+            $videoInfo = $data['result'][0];
+            $judul = $videoInfo['title'];
+            $videoUrl = "https://doods.pro/e/$fileCode";
     ?>
-    <h2 class="video-title">Video Player</h2>
+    <h2 class="video-title"><?php echo $judul; ?></h2>
     <div class="video-container">
         <iframe src="<?php echo $videoUrl; ?>" frameborder="0" allowfullscreen></iframe>
     </div>
     <?php
+        } else {
+            echo "Video tidak ditemukan.";
+        }
     } else {
         echo "Video tidak ditemukan.";
     }
