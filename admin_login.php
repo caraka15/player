@@ -17,8 +17,6 @@
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['link'])) {
         $link = $_POST['link'];
 
-        // Ganti dengan API key Anda
-        $apiKey = "your_api_key";
 
         // Memastikan bahwa link dimulai dengan "https://"
         if (!preg_match("~^https://~i", $link)) {
@@ -26,7 +24,7 @@
         }
 
         // Buat URL API
-        $apiUrl = "https://doodapi.com/api/upload/url?key={$apiKey}&url=" . urlencode($link);
+        $apiUrl = "https://doodapi.com/api/upload/url?key=238952a5hhtdv0iazrlcf3&url=" . urlencode($link);
 
         // Inisialisasi cURL session
         $ch = curl_init($apiUrl);
