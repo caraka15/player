@@ -18,10 +18,10 @@
         $link = $_POST['link'];
 
         // Ganti dengan API key Anda
-        $apiKey = "238952a5hhtdv0iazrlcf3";
+        $apiKey = "your_api_key";
 
         // Memastikan bahwa link dimulai dengan "https://"
-        if (!preg_match("~^(?:f|ht)tps?://~i", $link)) {
+        if (!preg_match("~^https://~i", $link)) {
             $link = "https://" . $link;
         }
 
@@ -43,7 +43,7 @@
         // Memeriksa respon dari API Doodapi
         $data = json_decode($response, true);
 
-        if ($data && isset($data['status']) && $data['status'] === 200) {
+        if ($data && isset($data['result']['status']) && $data['result']['status'] === 200) {
             echo "Status: 200 (Sukses)";
         } else {
             echo "Proses upload gagal.";
