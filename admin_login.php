@@ -24,7 +24,7 @@
         }
 
         // Buat URL API
-        $apiUrl = "https://doodapi.com/api/upload/url?key=238952a5hhtdv0iazrlcf3&url=" . urlencode($link);
+        $apiUrl = "https://doodapi.com/api/upload/url?key=238952a5hhtdv0iazrlcf3&url={$link}";
 
         // Inisialisasi cURL session
         $ch = curl_init($apiUrl);
