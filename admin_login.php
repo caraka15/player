@@ -18,7 +18,7 @@
         $link = $_POST['link'];
 
         // Ganti dengan API key Anda
-        $apiKey = "your_api_key";
+        $apiKey = "238952a5hhtdv0iazrlcf3";
 
         // Memastikan bahwa link dimulai dengan "https://"
         if (!preg_match("~^(?:f|ht)tps?://~i", $link)) {
